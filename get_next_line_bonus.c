@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aalami <aalami@student.1337.ma>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 16:11:17 by aalami            #+#    #+#             */
-/*   Updated: 2022/11/06 16:02:37 by aalami           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char    *stash_resize(char *saved)
 {
@@ -90,30 +78,14 @@ char    *ft_read(int fd, char *saved)
  char    *get_next_line(int fd)
 {
     char *line;
-    static char *saved;
+    static char *saved[10240];
     
     if(fd < 0 || BUFFER_SIZE <= 0 || read(fd,0,0) < 0)
         return (0);
-    saved = ft_read(fd, saved);
-    if(!saved )
+    saved[fd] = ft_read(fd, *(saved+fd));
+    if(!*(saved+fd))
         return (0);
-    line = get_my_line(saved);
-    saved = stash_resize(saved);
+    line = get_my_line(*(saved+fd));
+    saved[fd] = stash_resize(*(saved+fd));
     return (line);
 }
-
-// void f()
-// {
-//     system("leaks a.out");
-// }
-
-// int main()
-// {
-//     // atexit(f);
-//     int fd = open("/Users/aalami/Desktop/get_next_line/gnlTester/files/multiple_line_no_nl", O_RDWR,077777);
-
-//     int i = 0;
-//     while(i++ < 5)
-//      printf("%s",get_next_line(fd));
-  
-// }

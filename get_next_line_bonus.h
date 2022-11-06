@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   • get_next_line_bonus.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalami <aalami@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 15:54:36 by aalami            #+#    #+#             */
-/*   Updated: 2022/11/06 16:02:24 by aalami           ###   ########.fr       */
+/*   Created: 2022/11/06 15:54:14 by aalami            #+#    #+#             */
+/*   Updated: 2022/11/06 16:02:10 by aalami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GETNEXTLINE_H
-#define GETNEXTLINE_H
+#ifndef GETNEXTLINE_BONUS_H
+#define GETNEXTLINE_BONUS_H
 // #define BUFFER_SIZE 42
 #include <stdio.h>
 #include <fcntl.h>
