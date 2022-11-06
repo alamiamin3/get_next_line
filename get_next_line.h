@@ -6,13 +6,13 @@
 /*   By: aalami <aalami@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:54:36 by aalami            #+#    #+#             */
-/*   Updated: 2022/11/06 16:02:24 by aalami           ###   ########.fr       */
+/*   Updated: 2022/11/06 17:52:43 by aalami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GETNEXTLINE_H
 #define GETNEXTLINE_H
-// #define BUFFER_SIZE 42
+// #define BUFFER_SIZE 5
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>

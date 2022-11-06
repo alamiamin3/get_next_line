@@ -6,7 +6,7 @@
 /*   By: aalami <aalami@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:11:17 by aalami            #+#    #+#             */
-/*   Updated: 2022/11/06 16:02:37 by aalami           ###   ########.fr       */
+/*   Updated: 2022/11/06 17:55:40 by aalami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,14 @@ char    *ft_read(int fd, char *saved)
     char buf[BUFFER_SIZE + 1];
     char *tmp;
     ssize_t readed;
-
     readed = read(fd,buf,BUFFER_SIZE);
+            if(readed == -1)
+        {
+             printf("return %zu\n",readed);
+            if(saved)
+                free(saved);
+            return(0);
+        }
     buf[readed] = 0;
     while(readed > 0)
     {
@@ -84,6 +90,8 @@ char    *ft_read(int fd, char *saved)
         readed = read(fd,buf,BUFFER_SIZE);
         buf[readed] = 0;
     }
+    //  printf("this is : %lu\n",readed);
+    // printf("this is : %s\n",saved);
     return (saved);
 }
 
@@ -91,9 +99,13 @@ char    *ft_read(int fd, char *saved)
 {
     char *line;
     static char *saved;
-    
     if(fd < 0 || BUFFER_SIZE <= 0 || read(fd,0,0) < 0)
-        return (0);
+    { 
+       if(saved)
+            free(saved);
+       saved = NULL;
+       return(0);
+    }
     saved = ft_read(fd, saved);
     if(!saved )
         return (0);
@@ -107,13 +119,23 @@ char    *ft_read(int fd, char *saved)
 //     system("leaks a.out");
 // }
 
-// int main()
-// {
-//     // atexit(f);
-//     int fd = open("/Users/aalami/Desktop/get_next_line/gnlTester/files/multiple_line_no_nl", O_RDWR,077777);
+// // int main()
+// // {
+// //     // atexit(f);
+// //     int fd = open("file1.txt", O_RDWR,077777);
+// //     close(fd);
+// //     printf("%zd",read(fd,0,0));
 
-//     int i = 0;
-//     while(i++ < 5)
-//      printf("%s",get_next_line(fd));
-  
-// }
+// //     // int i = 0;
+// //     // printf("\t\t---------------------------------------------BEFORE CLOSE-------------------------------------------------\t\t\n\n");
+// //     // while(i++ < 2)
+// //     //  printf("%s",get_next_line(fd));
+     
+// //     //  close(open("file1.txt", O_RDWR,077777));
+// //     // printf("\n\n\t\t---------------------------------------------AFTER CLOSE-------------------------------------------------\t\t\n\n");
+    
+// //     // //  fd = open("file1.txt", O_RDWR,077777);
+// //     //  i = 0;
+// //     //     while(i++ < 4)
+// //     //  printf("%s",get_next_line(open("file1.txt", O_RDWR,077777)));
+// // }

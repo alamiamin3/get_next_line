@@ -81,7 +81,12 @@ char    *ft_read(int fd, char *saved)
     static char *saved[10240];
     
     if(fd < 0 || BUFFER_SIZE <= 0 || read(fd,0,0) < 0)
-        return (0);
+    { 
+       if(*(saved+fd))
+            free(*(saved+fd));
+       *(saved+fd) = NULL;
+       return(0);
+    }
     saved[fd] = ft_read(fd, *(saved+fd));
     if(!*(saved+fd))
         return (0);
